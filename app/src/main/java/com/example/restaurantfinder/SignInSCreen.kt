@@ -59,7 +59,7 @@ fun SignInScreen(navController: NavHostController) {
 
         
         ElevatedButton(
-            onClick = { /* Handle sign in logic */ },
+            onClick = { navController.navigate("home") },
             modifier = Modifier
                 .clip(RoundedCornerShape(30.dp))
                 .height(40.dp)
