@@ -74,7 +74,7 @@ fun SignUpScreen(navController: NavHostController) {
                 .clip(RoundedCornerShape(30.dp))
                 .height(40.dp)
                 .width(250.dp),
-            colors = ButtonDefaults.buttonColors(Color.Blue),
+            colors = ButtonDefaults.buttonColors(Color(0xFFFFC00B)),
             elevation = ButtonDefaults.buttonElevation(20.dp)
         ) {
             Text(text = "CREATE", fontSize = 18.sp)
