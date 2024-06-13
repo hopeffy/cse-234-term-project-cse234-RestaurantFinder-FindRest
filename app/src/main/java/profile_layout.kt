@@ -42,7 +42,7 @@ fun Profile_Layout(navController: NavHostController) {
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.profile2),
+            painter = painterResource(id = R.drawable.profileicon),
             contentDescription = "Profile photo " ,
             modifier = Modifier
                 .padding(10.dp)
@@ -88,7 +88,7 @@ fun Profile_Layout(navController: NavHostController) {
                     Button(
                         onClick = { navController.navigate("comments") },
                         modifier = Modifier
-                            .height(40.dp)
+                            .height(46.dp)
                             .width(200.dp)
                             .border( width = 1.dp , Color.Gray , shape = RoundedCornerShape(100.dp))
                         ,
@@ -105,7 +105,7 @@ fun Profile_Layout(navController: NavHostController) {
                     Button(
                         onClick = { /* Handle button click */ },
                         modifier = Modifier
-                            .height(40.dp)
+                            .height(46.dp)
                             .width(200.dp)
                             .border( width = 1.dp , Color.Gray , shape = RoundedCornerShape(100.dp))
                         ,
@@ -123,7 +123,7 @@ fun Profile_Layout(navController: NavHostController) {
                     Button(
                         onClick = { /* Handle button click */ },
                         modifier = Modifier
-                            .height(40.dp)
+                            .height(46.dp)
                             .width(200.dp)
                             .border( width = 1.dp , Color.Gray , shape = RoundedCornerShape(100.dp))
                         ,

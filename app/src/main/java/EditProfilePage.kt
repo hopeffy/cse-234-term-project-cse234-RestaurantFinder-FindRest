@@ -45,7 +45,7 @@ fun EditProfile(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.profile2),
+            painter = painterResource(id = R.drawable.profileicon),
             contentDescription = "Profile photo " ,
             modifier = Modifier
                 .padding(10.dp)

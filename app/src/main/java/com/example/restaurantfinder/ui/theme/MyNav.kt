@@ -3,6 +3,7 @@ package com.example.restaurantfinder.ui.theme
 import Comments
 import EditProfile
 import Profile_Layout
+import SelectedRestaurant
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -23,6 +24,9 @@ fun MyNav() {
         composable("edit") { EditProfile(navController) }
         composable("profile") { Profile_Layout(navController) }
         composable("comments") { Comments(navController) }
+        composable("selected_rest") { SelectedRestaurant(navController) }
+
+
 
     }
 }

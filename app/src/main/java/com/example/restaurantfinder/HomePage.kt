@@ -46,6 +46,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -176,7 +177,7 @@ fun CategoryTabs() {
 
 @Composable
 fun RestaurantList(navController: NavHostController ) {
-    var restaurantList = mutableListOf("ahnhgnghn", "b", "c", " d", "e").map { "Restaurant Name: $it" }
+    var restaurantList = mutableListOf("a", "b", "c", " d", "e").map { "Restaurant: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -200,7 +201,7 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
         modifier = Modifier
             .fillMaxWidth()
             .height(200.dp)
-            .clickable { }
+            .clickable { navController.navigate("selected_rest") }
             .padding(8.dp)
     ) {
         Row(
@@ -253,21 +254,25 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
 
             }
 
-            Column (horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.Center )
+            Row (horizontalArrangement =Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically)
 
             {
 
                     Icon(
+
                         imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
                         contentDescription = null,
-                        tint = if (isFavorite) Color.Yellow else Color.Gray,
+                        tint = if (isFavorite) Color.Red else Color.Gray,
                         modifier = Modifier
                             .clickable { isFavorite = !isFavorite }
                             .padding(end = 8.dp)
+
                     )
 
             }
 
         }
+
     }
 }

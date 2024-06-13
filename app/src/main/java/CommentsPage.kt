@@ -24,7 +24,9 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -67,7 +69,7 @@ fun Comments(navController: NavHostController) {
 
 @Composable
 fun RestaurantList(navController: NavHostController) {
-    val restaurantList = listOf("a", "b", "c", " d", "e").map { "Restaurant Name: $it" }
+    val restaurantList = listOf("a", "b", "c", " d", "e").map { "Restaurant: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -81,7 +83,10 @@ fun RestaurantList(navController: NavHostController) {
 
 @Composable
 fun CommentCard(restaurantName: String, navController: NavHostController) {
+
     var isFavorite by remember { mutableStateOf(false) }
+    var comments by remember { mutableStateOf("")
+    }
 
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(Color.White),
@@ -89,8 +94,8 @@ fun CommentCard(restaurantName: String, navController: NavHostController) {
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp)
-            .clickable {  }
+            .height(250.dp)
+            .clickable { }
             .padding(8.dp)
     ) {
         Row(
@@ -115,10 +120,10 @@ fun CommentCard(restaurantName: String, navController: NavHostController) {
 
                 Text("Location", modifier = Modifier.clickable { navController.navigate("profile") })
                 Text(restaurantName , fontWeight = FontWeight.Bold)
-                Text("Comment:")
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically
+
                 ) {
                     repeat(5) {
                         Icon(
@@ -132,19 +137,33 @@ fun CommentCard(restaurantName: String, navController: NavHostController) {
                     Text("4.5", color = Color.Gray, fontSize = 12.sp)
                 }
 
+                Text(text = "Restaurant Comment")
+
+                OutlinedTextField(value = comments , onValueChange = { comments = it },
+                    label = { Text(text = "Comment here")} ,
+                    modifier = Modifier
+                        .width(180.dp)
+                        .height(90.dp),
+
+                )
                 Spacer(modifier = Modifier.weight(1f))
             }
 
-            Column (horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.Center ){
+            Column (horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.Top ){
                 Icon(
                     imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
                     contentDescription = null,
-                    tint = if (isFavorite) Color.Yellow else Color.Gray,
+                    tint = if (isFavorite) Color.Red else Color.Gray,
                     modifier = Modifier
                         .clickable { isFavorite = !isFavorite }
                         .padding(end = 8.dp)
                 )
+
+
             }
+
+
         }
     }
 }
+
