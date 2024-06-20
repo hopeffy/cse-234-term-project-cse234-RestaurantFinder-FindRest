@@ -31,6 +31,8 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -260,12 +262,13 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
                 Spacer(modifier = Modifier.weight(1f))
 
 
-                    Button(onClick = { navController.navigate("selected") }) {
+                    Button(onClick = { navController.navigate("selected") },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFC00B))
+                        ) {
                         Text(text = "See restaurant" ,
-                            modifier =  Modifier
+                            modifier = Modifier
                                 .height(23.dp)
-                                .width(100.dp)
-
+                                .width(100.dp),
 
 
                         )
