@@ -28,12 +28,14 @@ import com.example.restaurantfinder.R
 
 import androidx.compose.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.layout.ContentScale
 import java.lang.reflect.Modifier
 
 @Composable
@@ -62,8 +64,11 @@ fun SelectedRestaurant(navController: NavHostController) {
                         .background(Color.Gray)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.restaurant),
-                        contentDescription = null
+                        painter = painterResource(id = R.drawable.restaurant3),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+
+
                     )
                 }
 
@@ -92,11 +97,14 @@ fun SelectedRestaurant(navController: NavHostController) {
                         }
                         Text(text = "An attractive store with delicious food, local drinks.")
                     }
-                    IconButton(onClick = { /* TODO: Handle map click */ }) {
+                    IconButton(onClick = { /* map açılacak */ }) {
                         Icon(
                             painter = painterResource(id = R.drawable.map_icon),
                             contentDescription = null,
                             modifier = androidx.compose.ui.Modifier.size(30.dp)
+
+                                .clickable { /* map açılacak */ }
+
                         )
                     }
                 }
