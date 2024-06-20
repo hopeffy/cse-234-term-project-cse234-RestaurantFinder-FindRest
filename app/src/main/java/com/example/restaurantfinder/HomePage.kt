@@ -261,8 +261,10 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
                     Button(onClick = { navController.navigate("selected") }) {
                         Text(text = "See restaurant" ,
                             modifier =  Modifier
-                                .height(28.dp)
+                                .height(23.dp)
                                 .width(100.dp)
+
+
 
                         )
 

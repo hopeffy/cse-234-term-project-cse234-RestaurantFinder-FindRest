@@ -62,7 +62,7 @@ fun SelectedRestaurant(navController: NavHostController) {
                         .background(Color.Gray)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                        painter = painterResource(id = R.drawable.restaurant),
                         contentDescription = null
                     )
                 }
