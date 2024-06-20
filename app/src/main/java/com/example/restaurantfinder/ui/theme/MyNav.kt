@@ -24,7 +24,7 @@ fun MyNav() {
         composable("edit") { EditProfile(navController) }
         composable("profile") { Profile_Layout(navController) }
         composable("comments") { Comments(navController) }
-        composable("selected_rest") { SelectedRestaurant(navController) }
+        composable("selected") { SelectedRestaurant(navController) }
 
 
 

@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 
+
+
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -28,6 +30,7 @@ import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -201,7 +204,7 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
         modifier = Modifier
             .fillMaxWidth()
             .height(200.dp)
-            .clickable { navController.navigate("selected_rest") }
+            .clickable { navController.navigate("selected") }
             .padding(8.dp)
     ) {
         Row(
@@ -232,7 +235,10 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
                 verticalArrangement = Arrangement.Center) {
 
                 Text(restaurantName , fontWeight = FontWeight.Bold)
-                Text("Location" , Modifier.clickable { navController.navigate("profile") })
+                Text("Location" , Modifier.clickable { navController.navigate("profile")
+
+                }
+                )
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically
@@ -251,6 +257,16 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
 
                 Spacer(modifier = Modifier.weight(1f))
 
+
+                    Button(onClick = { navController.navigate("selected") }) {
+                        Text(text = "See restaurant" ,
+                            modifier =  Modifier
+                                .height(28.dp)
+                                .width(100.dp)
+
+                        )
+
+                    }
 
             }
 
@@ -272,7 +288,10 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
 
             }
 
+
+
+            }
         }
 
     }
-}
+
