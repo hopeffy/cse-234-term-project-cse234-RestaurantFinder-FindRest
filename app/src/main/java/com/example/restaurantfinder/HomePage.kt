@@ -65,7 +65,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 
-data class NavItemState (
+/*data class NavItemState (
     val title :String,
     val selectedIcon : ImageVector,
     val unselected : ImageVector,
@@ -74,20 +74,22 @@ data class NavItemState (
 ){
 
 
-}
+}*/
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
+
+
     var searchRest by remember { mutableStateOf("") }
 
 
     var selectedTab by remember { mutableStateOf(0) }
     val tabs = listOf("Home", "Map", "Favorites", "Profile")
 
-    var bottomNavState by rememberSaveable { mutableStateOf(0) }
+    /*var bottomNavState by rememberSaveable { mutableStateOf(0) }
 
     Scaffold (
         bottomBar = {
@@ -118,7 +120,7 @@ fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
                 }
             }
         }
-    ){
+    ){*/
           Column {
 
               OutlinedTextField(value = searchRest, onValueChange = {  searchRest= it },
@@ -160,7 +162,7 @@ fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
 
     }
 
-}
+//}
 
 @Composable
 fun CategoryTabs() {
@@ -180,7 +182,7 @@ fun CategoryTabs() {
 
 @Composable
 fun RestaurantList(navController: NavHostController ) {
-    var restaurantList = mutableListOf("a", "b", "c", " d", "e").map { "Restaurant: $it" }
+    var restaurantList = mutableListOf("a", "b", "c", " d", "e" , "f").map { "Restaurant: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
