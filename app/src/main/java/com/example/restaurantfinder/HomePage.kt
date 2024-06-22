@@ -89,7 +89,7 @@ fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
 
 
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Home", "Map", "Favorites", "Profile")
+   // val tabs = listOf("Home", "Map", "Favorites", "Profile")
 
     /*var bottomNavState by rememberSaveable { mutableStateOf(0) }
 
