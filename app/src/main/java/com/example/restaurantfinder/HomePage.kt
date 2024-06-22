@@ -134,7 +134,7 @@ fun CategoryTabs(selectedTab: Int, onTabSelected: (Int) -> Unit) {
 
 @Composable
 fun RestaurantList(navController: NavHostController ) {
-    var restaurantList = mutableListOf("a", "b", "c", " d", "e" , "f").map { "Cafe: $it" }
+    var restaurantList = mutableListOf("StarBucks", "Milk Bar", "Arabica", "Steam", "Mack Bear" , "Hang Out").map { "Cafe: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -147,7 +147,7 @@ fun RestaurantList(navController: NavHostController ) {
 }
 @Composable
 fun BakeryList(navController: NavHostController ) {
-    var bakeryList = mutableListOf("Günes", "b", "c", " d", "e" , "f").map { "Bakery: $it" }
+    var bakeryList = mutableListOf("Günes Fırını", "Simit Sarayı", "Deniz Simit Fırını", "Ata Fırın-Cafe", "Ekin Fırın Cafe").map { "Bakery: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -160,7 +160,7 @@ fun BakeryList(navController: NavHostController ) {
 }
 @Composable
 fun ChineseList(navController: NavHostController ) {
-    var chineseList = mutableListOf("a", "b", "c", " d", "e" , "f").map { "Chinese: $it" }
+    var chineseList = mutableListOf("Tavuk Dünyası", "Köfteci İlhan", "Burger King", "Kırık Tezgah", "Meltem Restaurant").map { "Chinese: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -187,205 +187,72 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
             .clickable { navController.navigate("selected") }
             .padding(8.dp)
     ) {
-        Row(
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxSize()
-                .clickable { }
-                .padding(8.dp)
-        ) {
-            Box(
+        Box(modifier = Modifier.fillMaxSize()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .size(100.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .fillMaxWidth()
+                    .padding(8.dp)
             ) {
-                Image(
-
-                    painter = painterResource(id = R.drawable.restaurant),
-                    contentDescription = null,
-                    contentScale = ContentScale.Inside,
-                    modifier = Modifier.fillMaxSize()
-
-                )
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Column(horizontalAlignment = Alignment.Start ,
-                verticalArrangement = Arrangement.Center) {
-
-                Text(restaurantName , fontWeight = FontWeight.Bold)
-                Text("Location" , Modifier.clickable { navController.navigate("profile")
-
-                }
-                )
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(RoundedCornerShape(8.dp))
                 ) {
-                    repeat(5) {
-                        Icon(
-                            imageVector = Icons.Filled.Star,
-                            contentDescription = null,
-                            tint = Color.Yellow,
-                            modifier = Modifier.size(16.dp)
-                        )
-                    }
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("4.5", color = Color.Gray, fontSize = 12.sp)
-                }
-
-                Spacer(modifier = Modifier.weight(1f))
-
-
-                    Button(onClick = { navController.navigate("selected") },
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFC00B))
-                        ) {
-                        Text(text = "See restaurant" ,
-                            modifier = Modifier
-                                .height(23.dp)
-                                .width(100.dp),
-
-
-                        )
-
-                    }
-
-            }
-
-            Row (horizontalArrangement =Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically)
-
-            {
-
-                    Icon(
-
-                        imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
+                    Image(
+                        painter = painterResource(id = R.drawable.restaurant),
                         contentDescription = null,
-                        tint = if (isFavorite) Color.Red else Color.Gray,
-                        modifier = Modifier
-                            .clickable { isFavorite = !isFavorite }
-                            .padding(end = 8.dp)
+                        contentScale = ContentScale.Inside,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+                Spacer(modifier = Modifier.width(8.dp))
 
+                Column(
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(restaurantName, fontWeight = FontWeight.Bold)
+                    Text(
+                        "Location",
+                        Modifier.clickable { navController.navigate("profile") }
                     )
 
-            }
-
-
-
-            }
-        }
-
-    }
-
-@Composable
-fun BakeryCard(restaurantName: String ,navController: NavHostController ) {
-
-    var isFavorite by remember { mutableStateOf(false) }
-
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(Color.White),
-        shape = RoundedCornerShape(12.dp),
-        elevation = CardDefaults.cardElevation(8.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
-            .clickable { navController.navigate("selected") }
-            .padding(8.dp)
-    ) {
-        Row(
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxSize()
-                .clickable { }
-                .padding(8.dp)
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(100.dp)
-                    .clip(RoundedCornerShape(8.dp))
-            ) {
-                Image(
-
-                    painter = painterResource(id = R.drawable.restaurant),
-                    contentDescription = null,
-                    contentScale = ContentScale.Inside,
-                    modifier = Modifier.fillMaxSize()
-
-                )
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Column(horizontalAlignment = Alignment.Start ,
-                verticalArrangement = Arrangement.Center) {
-
-                Text(restaurantName , fontWeight = FontWeight.Bold)
-                Text("Location" , Modifier.clickable { navController.navigate("profile")
-
-                }
-                )
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    repeat(5) {
-                        Icon(
-                            imageVector = Icons.Filled.Star,
-                            contentDescription = null,
-                            tint = Color.Yellow,
-                            modifier = Modifier.size(16.dp)
-                        )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        repeat(5) {
+                            Icon(
+                                imageVector = Icons.Filled.Star,
+                                contentDescription = null,
+                                tint = Color.Yellow,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("4.5", color = Color.Gray, fontSize = 12.sp)
                     }
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("4.5", color = Color.Gray, fontSize = 12.sp)
-                }
 
-                Spacer(modifier = Modifier.weight(1f))
+                    Spacer(modifier = Modifier.weight(1f))
 
-
-                Button(onClick = { navController.navigate("selected") },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFC00B))
-                ) {
-                    Text(text = "See restaurant" ,
-                        modifier = Modifier
-                            .height(23.dp)
-                            .width(100.dp),
-
-
-                        )
 
                 }
-
             }
 
-            Row (horizontalArrangement =Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically)
-
-            {
-
-                Icon(
-
-                    imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
-                    contentDescription = null,
-                    tint = if (isFavorite) Color.Red else Color.Gray,
-                    modifier = Modifier
-                        .clickable { isFavorite = !isFavorite }
-                        .padding(end = 8.dp)
-
-                )
-
-            }
-
-
-
+            Icon(
+                imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
+                contentDescription = null,
+                tint = if (isFavorite) Color.Red else Color.Gray,
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .clickable { isFavorite = !isFavorite }
+                    .padding(end = 8.dp)
+            )
         }
     }
-
 }
-@Composable
-fun ChineseCard(restaurantName: String ,navController: NavHostController ) {
 
+@Composable
+fun BakeryCard(bakeryName: String, navController: NavHostController) {
     var isFavorite by remember { mutableStateOf(false) }
 
     ElevatedCard(
@@ -398,93 +265,145 @@ fun ChineseCard(restaurantName: String ,navController: NavHostController ) {
             .clickable { navController.navigate("selected") }
             .padding(8.dp)
     ) {
-        Row(
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxSize()
-                .clickable { }
-                .padding(8.dp)
-        ) {
-            Box(
+        Box(modifier = Modifier.fillMaxSize()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .size(100.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .fillMaxWidth()
+                    .padding(8.dp)
             ) {
-                Image(
-
-                    painter = painterResource(id = R.drawable.restaurant),
-                    contentDescription = null,
-                    contentScale = ContentScale.Inside,
-                    modifier = Modifier.fillMaxSize()
-
-                )
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Column(horizontalAlignment = Alignment.Start ,
-                verticalArrangement = Arrangement.Center) {
-
-                Text(restaurantName , fontWeight = FontWeight.Bold)
-                Text("Location" , Modifier.clickable { navController.navigate("profile")
-
-                }
-                )
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    repeat(5) {
-                        Icon(
-                            imageVector = Icons.Filled.Star,
-                            contentDescription = null,
-                            tint = Color.Yellow,
-                            modifier = Modifier.size(16.dp)
-                        )
-                    }
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("4.5", color = Color.Gray, fontSize = 12.sp)
-                }
-
-                Spacer(modifier = Modifier.weight(1f))
-
-
-                Button(onClick = { navController.navigate("selected") },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFC00B))
-                ) {
-                    Text(text = "See restaurant" ,
-                        modifier = Modifier
-                            .height(23.dp)
-                            .width(100.dp),
-
-
-                        )
-
-                }
-
-            }
-
-            Row (horizontalArrangement =Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically)
-
-            {
-
-                Icon(
-
-                    imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
-                    contentDescription = null,
-                    tint = if (isFavorite) Color.Red else Color.Gray,
+                Box(
                     modifier = Modifier
-                        .clickable { isFavorite = !isFavorite }
-                        .padding(end = 8.dp)
+                        .size(100.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.restaurant),
+                        contentDescription = null,
+                        contentScale = ContentScale.Inside,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+                Spacer(modifier = Modifier.width(8.dp))
 
-                )
+                Column(
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(bakeryName, fontWeight = FontWeight.Bold)
+                    Text(
+                        "Location",
+                        Modifier.clickable { navController.navigate("profile") }
+                    )
 
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        repeat(5) {
+                            Icon(
+                                imageVector = Icons.Filled.Star,
+                                contentDescription = null,
+                                tint = Color.Yellow,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("4.5", color = Color.Gray, fontSize = 12.sp)
+                    }
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+
+                    }
+                }
+            Icon(
+                imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
+                contentDescription = null,
+                tint = if (isFavorite) Color.Red else Color.Gray,
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .clickable { isFavorite = !isFavorite }
+                    .padding(end = 8.dp)
+            )
             }
-
-
 
         }
-    }
+        }
 
+
+@Composable
+fun ChineseCard(restaurantName: String, navController: NavHostController) {
+    var isFavorite by remember { mutableStateOf(false) }
+
+    ElevatedCard(
+        colors = CardDefaults.elevatedCardColors(Color.White),
+        shape = RoundedCornerShape(12.dp),
+        elevation = CardDefaults.cardElevation(8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp)
+            .clickable { navController.navigate("selected") }
+            .padding(8.dp)
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.restaurant),
+                        contentDescription = null,
+                        contentScale = ContentScale.Inside,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Column(
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(restaurantName, fontWeight = FontWeight.Bold)
+                    Text(
+                        "Location",
+                        Modifier.clickable { navController.navigate("profile") }
+                    )
+
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        repeat(5) {
+                            Icon(
+                                imageVector = Icons.Filled.Star,
+                                contentDescription = null,
+                                tint = Color.Yellow,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("4.5", color = Color.Gray, fontSize = 12.sp)
+                    }
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+
+                }
+            }
+
+            Icon(
+                imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
+                contentDescription = null,
+                tint = if (isFavorite) Color.Red else Color.Gray,
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .clickable { isFavorite = !isFavorite }
+                    .padding(end = 8.dp)
+            )
+        }
+    }
 }
