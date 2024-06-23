@@ -27,11 +27,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.restaurantfinder.R
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun Profile_Layout(navController: NavHostController) {
 
     var name : String = "Melih"
+    val auth = FirebaseAuth.getInstance()
 
     Column(
         modifier = Modifier
@@ -133,6 +135,25 @@ fun Profile_Layout(navController: NavHostController) {
                         Text(
                             text = "DARK MODE",
                             color = Color.Black,
+                            fontSize = 20.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(14.dp))
+
+                    ElevatedButton(
+                        onClick = {
+                            auth.signOut()
+                            navController.navigate("sign-in") },
+                        modifier = Modifier
+                            .height(40.dp)
+                            .width(150.dp),
+                        colors = ButtonDefaults.buttonColors(Color(0xFFFFC00B)),
+                        elevation = ButtonDefaults.buttonElevation(10.dp)
+                    ) {
+                        Text(
+                            text = "LOG OUT",
+                            color = Color.White,
                             fontSize = 20.sp
                         )
                     }

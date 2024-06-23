@@ -9,6 +9,7 @@ import Profile_Layout
 import SelectedRestaurant
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,6 +40,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -47,6 +50,12 @@ import androidx.navigation.compose.rememberNavController
 import com.example.restaurantfinder.ui.theme.MyNav
 
 import com.example.restaurantfinder.ui.theme.RestaurantFinderTheme
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 data class BottomNavigationItem(
 
@@ -60,10 +69,14 @@ data class BottomNavigationItem(
 )
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var auth : FirebaseAuth
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
         setContent {
             RestaurantFinderTheme {
 
@@ -192,6 +205,58 @@ class MainActivity : ComponentActivity() {
                             composable("entrance") { Entrance(navController) }
 
                         }
+                    }
+                }
+            }
+        }
+
+
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        checkLoggedInState()
+    }
+
+    private fun registerUser(email: String, password: String) {
+
+        if(email.isNotEmpty() && password.isNotEmpty()) {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    auth.createUserWithEmailAndPassword(email,password).await()
+                    withContext(Dispatchers.Main) {
+                        checkLoggedInState()
+                    }
+                }catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun checkLoggedInState() {
+        if(auth.currentUser == null) {
+            Toast.makeText(this, "You are not logged in", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "You are logged in", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun loginUser(email: String, password: String) {
+
+        if(email.isNotEmpty() && password.isNotEmpty()) {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    auth.signInWithEmailAndPassword(email,password).await()
+                    withContext(Dispatchers.Main) {
+                        checkLoggedInState()
+                    }
+                }catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }

@@ -10,9 +10,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.example.restaurantfinder.R
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun Entrance(navController : NavHostController){
+
+    val auth = FirebaseAuth.getInstance()
 
     Column (
         verticalArrangement = Arrangement.Center,
@@ -23,7 +26,13 @@ fun Entrance(navController : NavHostController){
             contentDescription = null,
             contentScale = ContentScale.Fit,
             modifier = Modifier.fillMaxSize()
-                .clickable { navController.navigate("sign_in") }
+                .clickable {
+                    if(auth.currentUser == null) {
+                        navController.navigate("sign_in")
+                    } else {
+                        navController.navigate("home")
+                    }
+                     }
         )
     }
 }

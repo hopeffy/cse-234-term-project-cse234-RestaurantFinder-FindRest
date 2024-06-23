@@ -1,5 +1,6 @@
 package com.example.restaurantfinder
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,6 +30,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 @Composable
 fun SignUpScreen(navController: NavHostController) {
@@ -36,6 +43,8 @@ fun SignUpScreen(navController: NavHostController) {
     var confirmPassword by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
+    val coroutineScope = rememberCoroutineScope()
+    val auth = FirebaseAuth.getInstance()
 
     Column(
         modifier = Modifier
@@ -69,7 +78,20 @@ fun SignUpScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         ElevatedButton(
-            onClick = { navController.navigate("sign_in") },
+            onClick = {
+                if (password == confirmPassword) {
+                    coroutineScope.launch {
+                        try {
+                            auth.createUserWithEmailAndPassword(email, password).await()
+                            navController.navigate("sign_in")
+                        } catch (e: Exception) {
+                            Toast.makeText(navController.context, e.message, Toast.LENGTH_LONG).show()
+                        }
+                    }
+                } else {
+                    Toast.makeText(navController.context, "Passwords do not match", Toast.LENGTH_LONG).show()
+                }
+                 },
             modifier = Modifier
                 .clip(RoundedCornerShape(30.dp))
                 .height(40.dp)
