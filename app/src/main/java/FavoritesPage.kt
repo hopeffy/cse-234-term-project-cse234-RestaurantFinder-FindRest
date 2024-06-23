@@ -187,18 +187,6 @@ fun FavoriteRestaurantCard(restaurantName: String, navController: NavHostControl
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Button(
-                    onClick = { navController.navigate("selected") },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFC00B)),
-                    modifier = Modifier.align(Alignment.End)
-                ) {
-                    Text(
-                        text = "See restaurant",
-                        modifier = Modifier
-                            .height(28.dp)
-                            .width(100.dp)
-                    )
-                }
             }
 
             Icon(

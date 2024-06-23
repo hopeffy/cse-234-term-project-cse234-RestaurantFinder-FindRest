@@ -76,6 +76,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         setContent {
+
             RestaurantFinderTheme {
 
                 val navController = rememberNavController()
