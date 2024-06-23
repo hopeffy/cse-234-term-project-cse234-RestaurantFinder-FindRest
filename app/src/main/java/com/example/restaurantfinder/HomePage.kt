@@ -51,14 +51,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.key.KeyEvent
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import kotlin.coroutines.ContinuationInterceptor
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -67,12 +72,13 @@ fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
 
 
     var searchRest by remember { mutableStateOf("") }
-
     var selectedTab by remember { mutableStateOf(0) }
+
 
           Column {
 
-              OutlinedTextField(value = searchRest, onValueChange = {  searchRest= it },
+              OutlinedTextField(value = searchRest,
+                  onValueChange = {  searchRest= it },
 
 
                   trailingIcon = {
@@ -84,10 +90,13 @@ fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
                   modifier = Modifier
                       .fillMaxWidth()
                       .padding(horizontal = 16.dp, vertical = 8.dp),
-                  shape = RoundedCornerShape(50.dp)
+                  shape = RoundedCornerShape(50.dp),
+                  maxLines = 1,
 
                   )
+
               Spacer(modifier = Modifier.height(3.dp))
+
             Text(
                 text = "EXPLORE RESTAURANT",
                 style = TextStyle(
@@ -107,13 +116,11 @@ fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
               CategoryTabs(selectedTab, onTabSelected = { selectedTab = it })
 
               when (selectedTab) {
-                  0 -> RestaurantList(navController)
-                  1 -> BakeryList(navController)
-                  2 -> ChineseList(navController)
+                  0 -> RestaurantList(navController, searchRest)
+                  1 -> BakeryList(navController , searchRest)
+                  2 -> ChineseList(navController , searchRest)
               }
         }
-
-
     }
 
 @Composable
@@ -133,8 +140,11 @@ fun CategoryTabs(selectedTab: Int, onTabSelected: (Int) -> Unit) {
 }
 
 @Composable
-fun RestaurantList(navController: NavHostController ) {
-    var restaurantList = mutableListOf("StarBucks", "Milk Bar", "Arabica", "Steam", "Mack Bear" , "Hang Out").map { "Cafe: $it" }
+fun RestaurantList(navController: NavHostController , filter: String = "") {
+
+    var restaurantList = mutableListOf(
+        "StarBucks", "Milk Bar", "Arabica", "Steam", "Mack Bear", "Hang Out"
+    ).filter { it.contains(filter, ignoreCase = true) }.map { "Cafe: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -146,8 +156,11 @@ fun RestaurantList(navController: NavHostController ) {
     }
 }
 @Composable
-fun BakeryList(navController: NavHostController ) {
-    var bakeryList = mutableListOf("Günes Fırını", "Simit Sarayı", "Deniz Simit Fırını", "Ata Fırın-Cafe", "Ekin Fırın Cafe").map { "Bakery: $it" }
+fun BakeryList(navController: NavHostController, filter: String = "" ) {
+
+    var bakeryList = mutableListOf(
+        "Günes Fırını", "Simit Sarayı", "Deniz Simit Fırını", "Ata Fırın-Cafe", "Ekin Fırın Cafe"
+    ).filter { it.contains(filter, ignoreCase = true) }.map { "Bakery: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -159,8 +172,11 @@ fun BakeryList(navController: NavHostController ) {
     }
 }
 @Composable
-fun ChineseList(navController: NavHostController ) {
-    var chineseList = mutableListOf("Tavuk Dünyası", "Köfteci İlhan", "Burger King", "Kırık Tezgah", "Meltem Restaurant").map { "Chinese: $it" }
+fun ChineseList(navController: NavHostController, filter: String = "" ) {
+
+    var chineseList = mutableListOf(
+        "Tavuk Dünyası", "Köfteci İlhan", "Burger King", "Kırık Tezgah", "Meltem Restaurant"
+    ).filter { it.contains(filter, ignoreCase = true) }.map { "Chinese: $it" }
 
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
@@ -315,6 +331,7 @@ fun BakeryCard(bakeryName: String, navController: NavHostController) {
 
                     }
                 }
+
             Icon(
                 imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
                 contentDescription = null,
@@ -324,10 +341,10 @@ fun BakeryCard(bakeryName: String, navController: NavHostController) {
                     .clickable { isFavorite = !isFavorite }
                     .padding(end = 8.dp)
             )
-            }
 
         }
-        }
+    }
+}
 
 
 @Composable

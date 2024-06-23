@@ -61,6 +61,7 @@ fun FavoritesPage(navController: NavHostController) {
                     .fillMaxWidth()
                     .padding(vertical = 8.dp),
                 shape = RoundedCornerShape(50.dp),
+                maxLines = 1,
                 placeholder = { Text(text = "Search favorites...") }
             )
 

@@ -22,7 +22,7 @@ fun MyNav() {
         composable("sign_up") { SignUpScreen(navController) }
         composable("sign_in") { SignInScreen(navController) }
         composable("reset") { ResetPassword(navController) }
-        composable("home") { HomePage(navController) }
+        composable("home") { HomePage(navController,) }
         composable("edit") { EditProfile(navController) }
         composable("profile") { Profile_Layout(navController) }
         composable("comments") { Comments(navController) }

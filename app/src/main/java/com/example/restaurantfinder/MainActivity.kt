@@ -40,8 +40,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -86,28 +84,28 @@ class MainActivity : ComponentActivity() {
 
                     BottomNavigationItem(
 
-                        title = "home",
+                        title = "Home",
                         selectedIcon = Icons.Filled.Home,
                         unselectedIcon = Icons.Outlined.Home,
                         hasNews = false,
                     ),
                     BottomNavigationItem(
 
-                        title = "map",
+                        title = "Map",
                         selectedIcon = Icons.Filled.Place,
                         unselectedIcon = Icons.Outlined.Place,
                         hasNews = false,
                     ),
                     BottomNavigationItem(
 
-                        title = "favorite",
+                        title = "Favorite",
                         selectedIcon = Icons.Filled.Favorite,
                         unselectedIcon = Icons.Outlined.Favorite,
                         hasNews = false,
                     ),
                     BottomNavigationItem(
 
-                        title = "profile",
+                        title = "Profile",
                         selectedIcon = Icons.Filled.Person,
                         unselectedIcon = Icons.Outlined.Person,
                         hasNews = true,
@@ -189,6 +187,7 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     )
+
                     {
                         innerPadding ->
 
@@ -196,7 +195,7 @@ class MainActivity : ComponentActivity() {
                             composable("sign_up") { SignUpScreen(navController) }
                             composable("sign_in") { SignInScreen(navController) }
                             composable("reset") { ResetPassword(navController) }
-                            composable("home") { HomePage(navController) }
+                            composable("home") { HomePage(navController,) }
                             composable("edit") { EditProfile(navController) }
                             composable("profile") { Profile_Layout(navController) }
                             composable("comments") { Comments(navController) }
