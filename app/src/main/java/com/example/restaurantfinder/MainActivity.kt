@@ -203,6 +203,7 @@ class MainActivity : ComponentActivity() {
                             composable("selected") { SelectedRestaurant(navController) }
                             composable("favorite") { FavoritesPage(navController) }
                             composable("entrance") { Entrance(navController) }
+                            composable("map") {  }
 
                         }
                     }
