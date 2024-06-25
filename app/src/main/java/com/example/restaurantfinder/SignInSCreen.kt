@@ -17,6 +17,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,8 +31,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.restaurantfinder.data.Account
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -42,6 +46,7 @@ fun SignInScreen(navController: NavHostController) {
     var email by remember { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
     val auth = FirebaseAuth.getInstance()
+
 
     Column(
         modifier = Modifier
@@ -72,6 +77,7 @@ fun SignInScreen(navController: NavHostController) {
                     try {
                         auth.signInWithEmailAndPassword(email, password).await()
                         navController.navigate("home")
+
                     } catch (e: FirebaseAuthException) {
                         // Handle user not found error
                         if (e.errorCode == "user-not-found") {

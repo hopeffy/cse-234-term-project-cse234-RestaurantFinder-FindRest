@@ -7,12 +7,10 @@ import androidx.annotation.StringRes
 * A class to define account
 * */
 data class Account(
-    val id: Long,
-    @StringRes val firstName: Int,
-    @StringRes val lastName: Int,
-    @StringRes val email: Int,
-    @StringRes val password: Int,
-    @StringRes val phone: Int,
+    val fullName: String = "",
+    val email: String = "",
+    val password: String = "",
+    val phone: String = "",
     /** User's avatar image resource id **/
-    @DrawableRes val avatar: Int
+    val avatarUrl: String = ""
 )

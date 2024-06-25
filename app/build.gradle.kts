@@ -31,6 +31,8 @@ android {
             )
         }
     }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -82,9 +84,20 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation ("com.google.firebase:firebase-database")
+    implementation ("com.google.firebase:firebase-auth-ktx:21.0.5")
+    implementation ("com.google.firebase:firebase-database-ktx:20.0.5")
+
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
 
     debugImplementation("androidx.compose.ui:ui-tooling:1.6.8")
     implementation("androidx.compose.ui:ui-tooling-preview:1.6.8")
+
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.8")
+
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+
+
+
 }

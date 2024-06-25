@@ -30,7 +30,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.restaurantfinder.data.Account
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,6 +47,7 @@ fun SignUpScreen(navController: NavHostController) {
     var email by remember { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
     val auth = FirebaseAuth.getInstance()
+    val database = FirebaseDatabase.getInstance().getReference("accounts")
 
     Column(
         modifier = Modifier
@@ -79,10 +82,19 @@ fun SignUpScreen(navController: NavHostController) {
 
         ElevatedButton(
             onClick = {
-                if (password == confirmPassword) {
+                if (password == confirmPassword ) {
                     coroutineScope.launch {
                         try {
-                            auth.createUserWithEmailAndPassword(email, password).await()
+                            val authResult = auth.createUserWithEmailAndPassword(email, password).await()
+                            val userId = authResult.user?.uid ?: throw Exception("User ID is null")
+                            val account = Account(
+                                fullName = fullName,
+                                email = email,
+                                password = password,
+                                phone = phone
+                            )
+                            database.child(userId).setValue(account).await()
+
                             navController.navigate("sign_in")
                         } catch (e: Exception) {
                             Toast.makeText(navController.context, e.message, Toast.LENGTH_LONG).show()

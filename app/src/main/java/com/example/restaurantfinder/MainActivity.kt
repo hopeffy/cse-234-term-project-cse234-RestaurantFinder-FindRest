@@ -9,6 +9,7 @@ import Profile_Layout
 import SelectedRestaurant
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -35,9 +36,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -45,11 +49,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.restaurantfinder.data.Account
 
 import com.example.restaurantfinder.ui.theme.MyNav
 
 import com.example.restaurantfinder.ui.theme.RestaurantFinderTheme
+import com.google.firebase.FirebaseApp
+
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.initialize
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -64,19 +75,21 @@ data class BottomNavigationItem(
     val hasNews: Boolean,
     val badgeCount: Int? = null
 
-
 )
 
 class MainActivity  : ComponentActivity() {
 
     lateinit var auth : FirebaseAuth
-
+    lateinit var database : FirebaseDatabase
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+        FirebaseApp.initializeApp(this)
+
         setContent {
 
             RestaurantFinderTheme {
@@ -244,6 +257,7 @@ class MainActivity  : ComponentActivity() {
         if(auth.currentUser == null) {
             Toast.makeText(this, "You are not logged in", Toast.LENGTH_LONG).show()
         } else {
+
             Toast.makeText(this, "You are logged in", Toast.LENGTH_LONG).show()
         }
     }
