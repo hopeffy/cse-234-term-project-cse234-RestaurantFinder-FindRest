@@ -99,11 +99,11 @@ fun EditProfile(navController: NavHostController) {
             label = { Text(text = "Phone") })
         Spacer(modifier = Modifier.height(6.dp))
 
-        OutlinedTextField(value = password, onValueChange = { password = it },
+        OutlinedTextField(value = email, onValueChange = { email = it },
             label = { Text(text = "E-mail") })
         Spacer(modifier = Modifier.height(6.dp))
 
-        OutlinedTextField(value = email, onValueChange = { email = it },
+        OutlinedTextField(value = password, onValueChange = { password = it },
             label = { Text(text = "Password") })
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -111,7 +111,7 @@ fun EditProfile(navController: NavHostController) {
         ElevatedButton(
             onClick = {
                 // Update account
-                val updatedAccount = Account(fullName, phone, email, password)
+                val updatedAccount = Account(fullName = fullName, phone = phone, email = email, password = password)
                 val userId = auth.currentUser?.uid
                 if (userId != null) {
                     coroutineScope.launch(Dispatchers.IO) {

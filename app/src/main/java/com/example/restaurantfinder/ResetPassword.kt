@@ -88,7 +88,7 @@ fun ResetPassword(navController: NavHostController) {
                         modifier = Modifier
                             .height(52.dp)
                             .width(200.dp),
-                        colors = ButtonDefaults.buttonColors(Color.Yellow),
+                        colors = ButtonDefaults.buttonColors(Color(0xFFFFC00B)),
                         elevation = ButtonDefaults.buttonElevation(10.dp)
                     ) {
                         Text(
