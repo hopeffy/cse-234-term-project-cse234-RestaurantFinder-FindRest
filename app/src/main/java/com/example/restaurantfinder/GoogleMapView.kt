@@ -1,22 +1,21 @@
 package com.example.restaurantfinder
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.navigation.NavHostController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 @SuppressLint("RememberReturnType")
 @Composable
-fun GoogleMapView() {
+fun GoogleMapView(navController: NavHostController) {
     val context = LocalContext.current
     val mapView = remember { MapView(context) }
 

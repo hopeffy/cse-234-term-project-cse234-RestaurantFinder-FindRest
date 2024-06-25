@@ -167,7 +167,7 @@ fun FavoriteRestaurantCard(restaurantName: String, navController: NavHostControl
                 modifier = Modifier.weight(1f)
             ) {
                 Text(restaurantName, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                Text("Location", Modifier.clickable { navController.navigate("profile") })
+                Text("Location", Modifier.clickable { navController.navigate("map") })
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

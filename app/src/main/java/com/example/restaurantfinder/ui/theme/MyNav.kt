@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.restaurantfinder.GoogleMapView
 import com.example.restaurantfinder.HomePage
 import com.example.restaurantfinder.ResetPassword
 import com.example.restaurantfinder.SignInScreen
@@ -29,6 +30,7 @@ fun MyNav() {
         composable("selected") { SelectedRestaurant(navController) }
         composable("favorite") { FavoritesPage(navController) }
         composable("entrance") { Entrance(navController) }
+        composable("map") { GoogleMapView(navController) }
 
     }
 }

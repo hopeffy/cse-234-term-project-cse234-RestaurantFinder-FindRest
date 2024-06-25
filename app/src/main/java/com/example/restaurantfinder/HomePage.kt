@@ -232,7 +232,7 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
                     Text(restaurantName, fontWeight = FontWeight.Bold)
                     Text(
                         "Location",
-                        Modifier.clickable { navController.navigate("profile") }
+                        Modifier.clickable { navController.navigate("map") }
                     )
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
