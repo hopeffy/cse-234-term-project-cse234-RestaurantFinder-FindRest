@@ -34,6 +34,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
@@ -66,9 +67,10 @@ data class BottomNavigationItem(
 
 )
 
-class MainActivity : ComponentActivity() {
+class MainActivity  : ComponentActivity() {
 
     lateinit var auth : FirebaseAuth
+
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
@@ -203,7 +205,7 @@ class MainActivity : ComponentActivity() {
                             composable("selected") { SelectedRestaurant(navController) }
                             composable("favorite") { FavoritesPage(navController) }
                             composable("entrance") { Entrance(navController) }
-                            composable("map") {  }
+                            composable("map") { GoogleMapView() }
 
                         }
                     }
@@ -263,6 +265,11 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+
+
 }
+
+
 
 
