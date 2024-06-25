@@ -14,9 +14,11 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,14 +30,44 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.restaurantfinder.R
+import com.example.restaurantfinder.data.Account
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 @Composable
 fun EditProfile(navController: NavHostController) {
+    val auth = FirebaseAuth.getInstance()
+    val database = FirebaseDatabase.getInstance().getReference("accounts")
+    val coroutineScope = rememberCoroutineScope()
 
     var fullName by remember { mutableStateOf("") }
     var phone by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
+
+    LaunchedEffect(Unit) {
+        val userId = auth.currentUser?.uid
+        if (userId != null) {
+            coroutineScope.launch(Dispatchers.IO) {
+                try {
+                    val snapshot = database.child(userId).get().await()
+                    val account = snapshot.getValue(Account::class.java)
+                    if (account != null) {
+                        fullName = account.fullName
+                        phone = account.phone
+                        password = account.password
+                        email = account.email
+                    }
+                } catch (e: Exception) {
+                    // to-do
+
+                }
+            }
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -77,7 +109,26 @@ fun EditProfile(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         ElevatedButton(
-            onClick = { navController.navigate("home") },
+            onClick = {
+                // Update account
+                val updatedAccount = Account(fullName, phone, email, password)
+                val userId = auth.currentUser?.uid
+                if (userId != null) {
+                    coroutineScope.launch(Dispatchers.IO) {
+                        try {
+                            database.child(userId).setValue(updatedAccount).await()
+                            // Success message or navigate to home screen (optional)
+                        } catch (e: Exception) {
+                            // Handle error (display message, log error)
+                        }
+                    }
+                } else {
+                    // Handle error: user not authenticated
+                }
+
+                navController.navigate("home")
+
+                      },
             modifier = Modifier
                 .clip(RoundedCornerShape(30.dp))
                 .height(40.dp)
