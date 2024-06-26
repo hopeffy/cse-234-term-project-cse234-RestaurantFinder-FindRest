@@ -175,7 +175,7 @@ fun BakeryList(navController: NavHostController, filter: String = "" ) {
 fun ChineseList(navController: NavHostController, filter: String = "" ) {
 
     var chineseList = mutableListOf(
-        "Tavuk Dünyası", "Köfteci İlhan", "Burger King", "Kırık Tezgah", "Meltem Restaurant"
+        "Tavuk Dünyası", "Köfteci İlhan", "Burger King", "Kırık Tezgah", "Meltem Restaurant", "Dünya Döner"
     ).filter { it.contains(filter, ignoreCase = true) }.map { "Chinese: $it" }
 
     LazyColumn(

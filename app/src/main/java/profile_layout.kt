@@ -139,7 +139,7 @@ fun Profile_Layout(navController: NavHostController) {
                     }
                     Spacer(modifier = Modifier.height(14.dp))
                     Button(
-                        onClick = { /* Handle button click */ },
+                        onClick = { navController.navigate("language") },
                         modifier = Modifier
                             .height(46.dp)
                             .width(200.dp)

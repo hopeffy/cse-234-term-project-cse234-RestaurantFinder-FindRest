@@ -98,6 +98,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
 
+    implementation ("androidx.datastore:datastore-preferences:1.1.1")
+
 
 
 }

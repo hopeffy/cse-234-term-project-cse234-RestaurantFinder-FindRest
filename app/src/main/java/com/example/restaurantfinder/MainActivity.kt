@@ -74,7 +74,9 @@ class MainActivity  : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         FirebaseApp.initializeApp(this)
@@ -208,6 +210,7 @@ class MainActivity  : ComponentActivity() {
                             composable("favorite") { FavoritesPage(navController) }
                             composable("entrance") { Entrance(navController) }
                             composable("map") { GoogleMapView(navController) }
+                            composable("language") { LanguageSelectionScreen(navController) }
 
                         }
                     }
@@ -270,9 +273,7 @@ class MainActivity  : ComponentActivity() {
     }
 
 
-
 }
-
 
 
 
