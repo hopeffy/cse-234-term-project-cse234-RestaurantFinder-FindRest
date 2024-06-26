@@ -42,6 +42,12 @@ fun LanguageSelectionScreen(navController: NavHostController) {
             imageResId = R.drawable.english_flag,
             onClick = {  }
         )
+        Spacer(modifier = Modifier.height(16.dp))
+        LanguageButton(
+            text = "GERMAN",
+            imageResId = R.drawable.german,
+            onClick = {  }
+        )
     }
 }
 
