@@ -121,9 +121,11 @@ fun SelectedRestaurant(navController: NavHostController, commentList : List<Comm
                                 modifier = androidx.compose.ui.Modifier.size(16.dp)
                             )
                         }
-                        Text(text = "An attractive store with delicious food, local drinks.")
+                        if (findRest != null) {
+                            Text(text = findRest.description)
+                        }
                     }
-                    IconButton(onClick = { /* map açılacak */ }) {
+                    IconButton(onClick = { navController.navigate("map") }) {
                         Icon(
                             painter = painterResource(id = R.drawable.map_icon),
                             contentDescription = null,
@@ -242,6 +244,9 @@ fun cardCom(comment : CommentData.Comment) {
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(8.dp),
         modifier = Modifier
+            .clickable {
+
+            }
             .fillMaxWidth()
             .height(100.dp)
             .padding(8.dp)

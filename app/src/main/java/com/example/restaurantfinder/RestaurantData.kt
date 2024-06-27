@@ -1,5 +1,6 @@
 package com.example.restaurantfinder
 
+import android.content.ClipDescription
 import android.content.Context
 import com.example.restaurantfinder.data.Comment
 import com.example.restaurantfinder.data.RestaurantType
@@ -19,6 +20,7 @@ class RestaurantData {
         val restaurantTypeId : String = "",
         val totalScore: Double = 0.0,
         val totalNumberOfStars: Int = 1,
+        val description: String = "",
         val comments: List<Comment> = emptyList()
     )
 

@@ -4,92 +4,99 @@
       "id": "1",
       "name": "Sunrise Bakery",
       "location": "123 Main St, Springfield",
-      "Lat" : 36.8844,
-      "Lng" : 30.7046,
+      "Lat": 36.8844,
+      "Lng": 30.7046,
       "restaurantTypeId": "1",
       "totalScore": 4.5,
       "totalNumberOfStars": 10,
       "commentId": [
-        1,2
-        ]
+        1, 2
+      ],
+      "description": "A cozy bakery offering freshly baked breads, pastries, and a variety of coffee."
     },
     {
       "id": "2",
       "name": "Cafe Mocha",
       "location": "456 Elm St, Springfield",
-      "Lat" : 36.884,
-      "Lng" : 30.704,
+      "Lat": 36.884,
+      "Lng": 30.704,
       "restaurantTypeId": "2",
       "totalScore": 4.2,
-      "totalNumberOfStars": 8,      
+      "totalNumberOfStars": 8,
       "commentId": [
-        3,4
-        ]
-      
+        3, 4
+      ],
+      "description": "A popular cafe known for its rich mocha and a wide selection of sandwiches and desserts."
     },
     {
       "id": "3",
       "name": "Dragon Palace",
       "location": "789 Oak St, Springfield",
-      "Lat" : 36.887,
-      "Lng" : 30.605,
+      "Lat": 36.887,
+      "Lng": 30.605,
       "restaurantTypeId": "3",
       "totalScore": 4.8,
       "totalNumberOfStars": 15,
-      "commentId": [5,6]
-      
+      "commentId": [
+        5, 6
+      ],
+      "description": "An elegant Chinese restaurant offering a variety of traditional dishes and dim sum."
     },
     {
       "id": "4",
       "name": "Green Garden Cafe",
       "location": "101 Pine St, Springfield",
-      "Lat" : 36.883,
-      "Lng" : 30.706,
+      "Lat": 36.883,
+      "Lng": 30.706,
       "restaurantTypeId": "2",
       "totalScore": 3.9,
       "totalNumberOfStars": 7,
       "commentId": [
-        7,8
-        ]
+        7, 8
+      ],
+      "description": "A quaint cafe serving organic and locally sourced dishes with a focus on vegetarian options."
     },
     {
       "id": "5",
       "name": "Red Dragon",
       "location": "202 Cedar St, Springfield",
-      "Lat" : 36.881,
-      "Lng" : 30.709,
+      "Lat": 36.881,
+      "Lng": 30.709,
       "restaurantTypeId": "3",
       "totalScore": 4.0,
       "totalNumberOfStars": 9,
       "commentId": [
-        9,10
-        ]
+        9, 10
+      ],
+      "description": "A vibrant Chinese restaurant known for its spicy Szechuan dishes and flavorful Peking duck."
     },
     {
       "id": "6",
       "name": "Morning Brew",
       "location": "303 Birch St, Springfield",
-      "Lat" : 36.887,
-      "Lng" : 30.708,
+      "Lat": 36.887,
+      "Lng": 30.708,
       "restaurantTypeId": "2",
       "totalScore": 4.6,
       "totalNumberOfStars": 12,
       "commentId": [
-        10,11
-        ]
+        10, 11
+      ],
+      "description": "A modern cafe with a relaxed atmosphere, offering specialty coffees and a variety of breakfast options."
     },
     {
       "id": "7",
       "name": "Sweet Treats Bakery",
       "location": "404 Willow St, Springfield",
-      "Lat" : 36.882,
-      "Lng" : 30.703,
+      "Lat": 36.882,
+      "Lng": 30.703,
       "restaurantTypeId": "3",
       "totalScore": 4.3,
       "totalNumberOfStars": 11,
       "commentId": [
-        12,13
-      ]
+        12, 13
+      ],
+      "description": "A delightful bakery specializing in cakes, cookies, and other sweet treats, perfect for any occasion."
     }
   ]
 }

@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -456,9 +457,11 @@ fun card(restaurant : RestaurantData.Restaurant ,navController: NavHostControlle
                     .padding(8.dp)
             ) {
                 Box(
+
                     modifier = Modifier
                         .size(100.dp)
                         .clip(RoundedCornerShape(8.dp))
+
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.restaurant),
@@ -482,7 +485,8 @@ fun card(restaurant : RestaurantData.Restaurant ,navController: NavHostControlle
                     )
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        repeat(5) {
+
+                        repeat(restaurant.totalScore.toInt()) {
                             Icon(
                                 imageVector = Icons.Filled.Star,
                                 contentDescription = null,
@@ -511,4 +515,7 @@ fun card(restaurant : RestaurantData.Restaurant ,navController: NavHostControlle
             )
         }
     }
+
+
 }
+
