@@ -476,8 +476,9 @@ fun card(restaurant : RestaurantData.Restaurant ,navController: NavHostControlle
                 ) {
                     Text(restaurant.name, fontWeight = FontWeight.Bold)
                     Text(
-                        "Location",
-                        Modifier.clickable { navController.navigate("map") }
+                        "Location ${restaurant.location}",
+                        Modifier.clickable {
+                            navController.navigate("map") }
                     )
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -490,7 +491,7 @@ fun card(restaurant : RestaurantData.Restaurant ,navController: NavHostControlle
                             )
                         }
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("4.5", color = Color.Gray, fontSize = 12.sp)
+                        Text("${restaurant.totalScore}", color = Color.Gray, fontSize = 12.sp)
                     }
 
                     Spacer(modifier = Modifier.weight(1f))

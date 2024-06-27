@@ -130,7 +130,9 @@ fun SelectedRestaurant(navController: NavHostController, commentList : List<Comm
                             modifier = androidx.compose.ui.Modifier
                                 .size(30.dp)
 
-                                .clickable { /* map açılacak */ }
+                                .clickable {
+                                    navController.navigate("map")
+                                }
 
                         )
                     }
