@@ -14,6 +14,8 @@ class RestaurantData {
         val id: String = "",
         var name: String = "",
         val location : String = "",
+        val Lat : Double = 0.0,
+        val Lng : Double = 0.0,
         val restaurantTypeId : String = "",
         val totalScore: Double = 0.0,
         val totalNumberOfStars: Int = 1,

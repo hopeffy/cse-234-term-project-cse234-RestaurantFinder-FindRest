@@ -40,7 +40,7 @@ fun MyNav() {
         composable("comments") { Comments(navController, auth, comList, restList2) }
         composable("favorite") { FavoritesPage(navController) }
         composable("entrance") { Entrance(navController) }
-        composable("map") { GoogleMapView(navController) }
+        composable("map") { GoogleMapView(navController, restList2 = restList2) }
 
         composable(
             route = "selected/{restaurantId}",

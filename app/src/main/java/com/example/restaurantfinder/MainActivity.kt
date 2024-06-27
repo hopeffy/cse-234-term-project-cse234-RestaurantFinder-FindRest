@@ -253,7 +253,7 @@ class MainActivity  : ComponentActivity() {
                             composable("selected") { SelectedRestaurant(navController,comList,restId , restList2 = restList2) }
                             composable("favorite") { FavoritesPage(navController) }
                             composable("entrance") { Entrance(navController) }
-                            composable("map") { GoogleMapView(navController) }
+                            composable("map") { GoogleMapView(navController, restList2 = restList2) }
                             composable("language") { LanguageSelectionScreen(navController) }
                             composable(
                                 route = "selected/{restaurantId}",
@@ -323,7 +323,7 @@ class MainActivity  : ComponentActivity() {
             }
         }
     }
-    
+
 
 }
 
