@@ -1,0 +1,116 @@
+ {
+    "accounts": [
+    {
+      "id": "zIFfanVD9oUE0C9hoPYaOpDm4js2",
+      "fullName": "Alice Johnson",
+      "email": "alice@example.com",
+      "password": "password123",
+      "phone": "555-1234",
+      "avatarUrl": "http://example.com/avatar/alice.jpg"
+    },
+    {
+      "id": "VCMSMw69dzZmQu78tOqnxxQYo2B2",
+      "fullName": "Bob Smith",
+      "email": "bob@example.com",
+      "password": "password123",
+      "phone": "555-5678",
+      "avatarUrl": "http://example.com/avatar/bob.jpg"
+    },
+    {
+      "id": "gXZBcyIOOLWOVp9DzZaiou9wmdp1",
+      "fullName": "Charlie Brown",
+      "email": "charlie@example.com",
+      "password": "password123",
+      "phone": "555-9876",
+      "avatarUrl": "http://example.com/avatar/charlie.jpg"
+    },
+    {
+      "id": "4",
+      "fullName": "David Wright",
+      "email": "david@example.com",
+      "password": "password123",
+      "phone": "555-4321",
+      "avatarUrl": "http://example.com/avatar/david.jpg"
+    },
+    {
+      "id": "5",
+      "fullName": "Eve Adams",
+      "email": "eve@example.com",
+      "password": "password123",
+      "phone": "555-6543",
+      "avatarUrl": "http://example.com/avatar/eve.jpg"
+    },
+    {
+      "id": "6",
+      "fullName": "Frank Harris",
+      "email": "frank@example.com",
+      "password": "password123",
+      "phone": "555-3210",
+      "avatarUrl": "http://example.com/avatar/frank.jpg"
+    },
+    {
+      "id": "7",
+      "fullName": "Grace Lee",
+      "email": "grace@example.com",
+      "password": "password123",
+      "phone": "555-7890",
+      "avatarUrl": "http://example.com/avatar/grace.jpg"
+    },
+    {
+      "id": "8",
+      "fullName": "Hank Miller",
+      "email": "hank@example.com",
+      "password": "password123",
+      "phone": "555-8765",
+      "avatarUrl": "http://example.com/avatar/hank.jpg"
+    },
+    {
+      "id": "9",
+      "fullName": "Ivy Green",
+      "email": "ivy@example.com",
+      "password": "password123",
+      "phone": "555-2345",
+      "avatarUrl": "http://example.com/avatar/ivy.jpg"
+    },
+    {
+      "id": "10",
+      "fullName": "Jack Black",
+      "email": "jack@example.com",
+      "password": "password123",
+      "phone": "555-5432",
+      "avatarUrl": "http://example.com/avatar/jack.jpg"
+    },
+    {
+      "id": "11",
+      "fullName": "Kate Brown",
+      "email": "kate@example.com",
+      "password": "password123",
+      "phone": "555-6789",
+      "avatarUrl": "http://example.com/avatar/kate.jpg"
+    },
+    {
+      "id": "12",
+      "fullName": "Luke White",
+      "email": "luke@example.com",
+      "password": "password123",
+      "phone": "555-9876",
+      "avatarUrl": "http://example.com/avatar/luke.jpg"
+    },
+    {
+      "id": "13",
+      "fullName": "Megan Fox",
+      "email": "megan@example.com",
+      "password": "password123",
+      "phone": "555-1234",
+      "avatarUrl": "http://example.com/avatar/megan.jpg"
+    },
+    {
+      "id": "14",
+      "fullName": "Nina Williams",
+      "email": "nina@example.com",
+      "password": "password123",
+      "phone": "555-8765",
+      "avatarUrl": "http://example.com/avatar/nina.jpg"
+    }
+  ]
+}

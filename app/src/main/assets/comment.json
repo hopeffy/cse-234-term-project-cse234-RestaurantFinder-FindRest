@@ -1,0 +1,117 @@
+{
+    "comments": [
+      {
+        "id": "1",
+        "senderId": "zIFfanVD9oUE0C9hoPYaOpDm4js2",
+        "restaurantId": "1",
+        "subject": "Great pastries",
+        "body": "The croissants were delicious!",
+        "score": 5
+      },
+      {
+        "id": "2",
+        "senderId": "zIFfanVD9oUE0C9hoPYaOpDm4js2",
+        "restaurantId": "1",
+        "subject": "Average coffee",
+        "body": "The coffee was okay, but I've had better.",
+        "score": 3
+      },
+      {
+        "id": "3",
+        "senderId": "VCMSMw69dzZmQu78tOqnxxQYo2B2",
+        "restaurantId": "2",
+        "subject": "Cozy atmosphere",
+        "body": "Loved the ambiance, perfect for a Sunday morning.",
+        "score": 4
+      },
+      {
+        "id": "4",
+        "senderId": "4",
+        "restaurantId": "2",
+        "subject": "Great service",
+        "body": "The staff was very friendly and attentive.",
+        "score": 5
+      },
+      {
+        "id": "5",
+        "senderId": "5",
+        "restaurantId": "3",
+        "subject": "Amazing food",
+        "body": "The dumplings are a must-try!",
+        "score": 5
+      },
+      {
+        "id": "6",
+        "senderId": "6",
+        "restaurantId": "3",
+        "subject": "Quick service",
+        "body": "Got my order in less than 10 minutes.",
+        "score": 5
+      },
+      {
+        "id": "7",
+        "senderId": "7",
+        "restaurantId": "4",
+        "subject": "Nice selection",
+        "body": "They have a good variety of vegan options.",
+        "score": 4
+      },
+      {
+        "id": "8",
+        "senderId": "8",
+        "restaurantId": "4",
+        "subject": "Could be better",
+        "body": "The salad was a bit bland.",
+        "score": 3
+      },
+      {
+        "id": "9",
+        "senderId": "9",
+        "restaurantId": "5",
+        "subject": "Tasty food",
+        "body": "Loved the sweet and sour chicken.",
+        "score": 4
+      },
+      {
+        "id": "10",
+        "senderId": "10",
+        "restaurantId": "5",
+        "subject": "Okay service",
+        "body": "The service was a bit slow.",
+        "score": 3
+      },
+      {
+        "id": "11",
+        "senderId": "11",
+        "restaurantId": "6",
+        "subject": "Excellent coffee",
+        "body": "The latte was perfect.",
+        "score": 5
+      },
+      {
+        "id": "12",
+        "senderId": "12",
+        "restaurantId": "6",
+        "subject": "Good place to work",
+        "body": "Quiet and comfortable, great for working on my laptop.",
+        "score": 4
+      },
+      {
+        "id": "13",
+        "senderId": "13",
+        "restaurantId": "7",
+        "subject": "Delicious cakes",
+        "body": "The chocolate cake is to die for!",
+        "score": 5
+      },
+      {
+        "id": "14",
+        "senderId": "14",
+        "restaurantId": "7",
+        "subject": "Nice place",
+        "body": "Cute little bakery with friendly staff.",
+        "score": 4
+      }
+    ]
+  }
+  

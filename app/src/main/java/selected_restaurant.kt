@@ -1,4 +1,3 @@
-import android.view.MenuItem
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,20 +25,41 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.restaurantfinder.R
 
-import androidx.compose.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import java.lang.reflect.Modifier
+import com.example.restaurantfinder.CommentData
+import com.example.restaurantfinder.RestaurantData
+import com.example.restaurantfinder.card
 
 @Composable
-fun SelectedRestaurant(navController: NavHostController) {
+fun SelectedRestaurant(navController: NavHostController, commentList : List<CommentData.Comment>, restaurantId: String?,
+                       restList2 : List<RestaurantData.Restaurant>) {
+
+    var filterCom = filterComment(commentList = commentList, restId = restaurantId)
+    var findRest = findRestaurant(restList = restList2, restId = restaurantId)
 
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
@@ -82,8 +102,14 @@ fun SelectedRestaurant(navController: NavHostController) {
                         modifier = androidx.compose.ui.Modifier.weight(1f)
                     )
                     {
-                        Text(text = "Restaurant:  ", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-                        Text(text = "Location", color = Color.Gray)
+                        if (findRest != null) {
+                            Text(text = "Restaurant:  ${findRest.name}", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                        }
+                        if (findRest != null) {
+                            Text(text = "Location ${findRest.location}",
+
+                                color = Color.Gray)
+                        }
                         Row(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -101,12 +127,15 @@ fun SelectedRestaurant(navController: NavHostController) {
                         Icon(
                             painter = painterResource(id = R.drawable.map_icon),
                             contentDescription = null,
-                            modifier = androidx.compose.ui.Modifier.size(30.dp)
+                            modifier = androidx.compose.ui.Modifier
+                                .size(30.dp)
 
                                 .clickable { /* map açılacak */ }
 
                         )
                     }
+
+
                 }
             }
         }
@@ -143,7 +172,12 @@ fun SelectedRestaurant(navController: NavHostController) {
                     MenuRow(name = "Fried Rice", price = "$8")
                 }
         }
+
     }
+        Column {
+            AllComment(filterCom)
+        }
+
 }
 
 @Composable
@@ -170,5 +204,97 @@ fun MenuRow(name: String, price: String) {
     ) {
         Text(text = name)
         Text(text = price)
+    }
+}
+
+@Composable
+fun filterComment(commentList : List<CommentData.Comment> ,restId : String?): List<CommentData.Comment> {
+    val filterComments = mutableListOf<CommentData.Comment>()
+    for (comment in commentList) {
+        if(comment.restaurantId == restId) {
+            filterComments.add(comment)
+        }
+    }
+    return filterComments
+}
+
+@Composable
+fun AllComment(comList: List<CommentData.Comment>) {
+
+    LazyColumn(
+        contentPadding = PaddingValues(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(comList) { com ->
+            cardCom(com)
+        }
+    }
+}
+
+@Composable
+fun cardCom(comment : CommentData.Comment) {
+
+
+    ElevatedCard(
+        colors = CardDefaults.elevatedCardColors(Color.White),
+        shape = RoundedCornerShape(12.dp),
+        elevation = CardDefaults.cardElevation(8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .padding(8.dp)
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.profileicon),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .padding(end = 8.dp)
+                            .height(20.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Column(
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(comment.subject, fontWeight = FontWeight.Bold)
+                    Text(comment.body, fontWeight = FontWeight.Light)
+
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        repeat(5) {
+                            Icon(
+                                imageVector = Icons.Filled.Star,
+                                contentDescription = null,
+                                tint = Color.Yellow,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("4.5", color = Color.Gray, fontSize = 12.sp)
+                    }
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+
+                }
+            }
+
+
+        }
     }
 }

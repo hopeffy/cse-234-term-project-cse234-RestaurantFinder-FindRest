@@ -1,0 +1,81 @@
+{
+  "restaurants": [
+    {
+      "id": "1",
+      "name": "Sunrise Bakery",
+      "location": "123 Main St, Springfield",
+      "restaurantTypeId": "1",
+      "totalScore": 4.5,
+      "totalNumberOfStars": 10,
+      "commentId": [
+        1,2
+        ]
+    },
+    {
+      "id": "2",
+      "name": "Cafe Mocha",
+      "location": "456 Elm St, Springfield",
+      "restaurantTypeId": "2",
+      "totalScore": 4.2,
+      "totalNumberOfStars": 8,      
+      "commentId": [
+        3,4
+        ]
+      
+    },
+    {
+      "id": "3",
+      "name": "Dragon Palace",
+      "location": "789 Oak St, Springfield",
+      "restaurantTypeId": "3",
+      "totalScore": 4.8,
+      "totalNumberOfStars": 15,
+      "commentId": [5,6]
+      
+    },
+    {
+      "id": "4",
+      "name": "Green Garden Cafe",
+      "location": "101 Pine St, Springfield",
+      "restaurantTypeId": "2",
+      "totalScore": 3.9,
+      "totalNumberOfStars": 7,
+      "commentId": [
+        7,8
+        ]
+    },
+    {
+      "id": "5",
+      "name": "Red Dragon",
+      "location": "202 Cedar St, Springfield",
+      "restaurantTypeId": "3",
+      "totalScore": 4.0,
+      "totalNumberOfStars": 9,
+      "commentId": [
+        9,10
+        ]
+    },
+    {
+      "id": "6",
+      "name": "Morning Brew",
+      "location": "303 Birch St, Springfield",
+      "restaurantTypeId": "2",
+      "totalScore": 4.6,
+      "totalNumberOfStars": 12,
+      "commentId": [
+        10,11
+        ]
+    },
+    {
+      "id": "7",
+      "name": "Sweet Treats Bakery",
+      "location": "404 Willow St, Springfield",
+      "restaurantTypeId": "3",
+      "totalScore": 4.3,
+      "totalNumberOfStars": 11,
+      "commentId": [
+        12,13
+      ]
+    }
+  ]
+}

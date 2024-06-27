@@ -54,20 +54,6 @@ fun ResetPassword(navController: NavHostController) {
 
     var email by remember { mutableStateOf("") }
 
-    SideEffect {
-
-        if (email.isNotEmpty()) {
-            coroutineScope.launch(IO) {
-                try {
-                    auth.sendPasswordResetEmail(email).await()
-
-                    errorMessage = "A password reset link has been sent to your email"
-                } catch (e: FirebaseAuthException) {
-                    errorMessage = "Failed to send password reset email: ${e.message}"
-                }
-            }
-        }
-    }
 
 
     Column(
@@ -120,7 +106,24 @@ fun ResetPassword(navController: NavHostController) {
                     horizontalArrangement = Arrangement.Center
                 ) {
                     ElevatedButton(
-                        onClick = { /* Handle button click */ },
+                        onClick = {
+                            if (email.isNotEmpty()) {
+                                coroutineScope.launch(IO) {
+                                    try {
+                                        auth.sendPasswordResetEmail(email).await()
+                                        errorMessage = "A password reset link has been sent to your email"
+                                    } catch (e: FirebaseAuthException) {
+                                        errorMessage = "Failed to send password reset email: ${e.message}"
+                                    }
+                                    Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+
+                                }
+                            } else {
+                                Toast.makeText(context, "Please enter your email", Toast.LENGTH_LONG).show()
+
+                            }
+
+                            navController.navigate("sign-in") },
                         modifier = Modifier
                             .height(52.dp)
                             .width(200.dp),

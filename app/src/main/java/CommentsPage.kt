@@ -44,11 +44,24 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.restaurantfinder.CommentData
 import com.example.restaurantfinder.R
 import com.example.restaurantfinder.RestaurantCard
+import com.example.restaurantfinder.RestaurantData
+import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun Comments(navController: NavHostController) {
+fun Comments(navController: NavHostController, auth: FirebaseAuth, commentList: List<CommentData.Comment>, restList2 : List<RestaurantData.Restaurant>) {
+    var filterCom = filterCommentbyUser(commentList = commentList, userId = auth.currentUser?.uid)
+    var fRest : RestaurantData.Restaurant?
+    for (comment in filterCom) {
+        var findRest = findRestaurant(restList = restList2, restId = comment.restaurantId)
+        fRest = findRest
+    }
+
+
+
+
     Column(modifier = Modifier.fillMaxSize()) {
         Text(
             text = "COMMENTS",
@@ -63,7 +76,10 @@ fun Comments(navController: NavHostController) {
                 letterSpacing = 1.25.sp
             )
         )
-        RestaurantList(navController)
+        //RestaurantList(navController)
+        Column {
+            AllComment(filterCom)
+        }
     }
 }
 
@@ -71,13 +87,12 @@ fun Comments(navController: NavHostController) {
 fun RestaurantList(navController: NavHostController) {
     val restaurantList = listOf("a", "b", "c", " d", "e").map { "Restaurant: $it" }
 
+
     LazyColumn(
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(restaurantList) { restaurant ->
-            CommentCard(restaurantName = restaurant, navController = navController)
-        }
+
     }
 }
 
@@ -166,4 +181,28 @@ fun CommentCard(restaurantName: String, navController: NavHostController) {
         }
     }
 }
+
+@Composable
+fun filterCommentbyUser(commentList : List<CommentData.Comment> ,userId : String?): List<CommentData.Comment> {
+    val filterComments = mutableListOf<CommentData.Comment>()
+    for (comment in commentList) {
+        if(comment.senderId == userId) {
+            filterComments.add(comment)
+        }
+    }
+    return filterComments
+}
+
+fun findRestaurant(restList : List<RestaurantData.Restaurant>, restId : String? ) : RestaurantData.Restaurant?{
+    var rest: RestaurantData.Restaurant? = null
+    for (res in restList) {
+            if(res.id == restId) {
+                rest = res;
+                break
+            }
+        }
+        return rest
+
+}
+
 

@@ -26,16 +26,11 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
@@ -43,36 +38,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.key.KeyEvent
-import androidx.compose.ui.input.key.key
-import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import kotlin.coroutines.ContinuationInterceptor
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
-
+fun HomePage(navController: NavHostController, restList: List<RestaurantData.Restaurant>, modifier: Modifier = Modifier) {
 
     var searchRest by remember { mutableStateOf("") }
     var selectedTab by remember { mutableStateOf(0) }
+
 
 
           Column {
@@ -116,17 +103,31 @@ fun HomePage(navController: NavHostController, modifier: Modifier = Modifier) {
               CategoryTabs(selectedTab, onTabSelected = { selectedTab = it })
 
               when (selectedTab) {
-                  0 -> RestaurantList(navController, searchRest)
+                  0 -> CoffeeList(navController, searchRest)
                   1 -> BakeryList(navController , searchRest)
                   2 -> ChineseList(navController , searchRest)
+                  3 -> AllRest(navController, restList)
               }
         }
     }
 
 @Composable
+fun AllRest(navController: NavHostController, restList: List<RestaurantData.Restaurant>) {
+
+    LazyColumn(
+        contentPadding = PaddingValues(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(restList) { restaurant ->
+            card(restaurant, navController)
+        }
+    }
+}
+
+@Composable
 fun CategoryTabs(selectedTab: Int, onTabSelected: (Int) -> Unit) {
     var selectedTab by remember { mutableStateOf(0) }
-    val tabs = listOf("Cafe", "Bakery", "Chinese")
+    val tabs = listOf("Cafe", "Bakery", "Chinese", "All")
 
     TabRow(selectedTabIndex = selectedTab) {
         tabs.forEachIndexed { index, title ->
@@ -139,8 +140,10 @@ fun CategoryTabs(selectedTab: Int, onTabSelected: (Int) -> Unit) {
     }
 }
 
+
+
 @Composable
-fun RestaurantList(navController: NavHostController , filter: String = "") {
+fun CoffeeList(navController: NavHostController , filter: String = "") {
 
     var restaurantList = mutableListOf(
         "StarBucks", "Milk Bar", "Arabica", "Steam", "Mack Bear", "Hang Out"
@@ -200,7 +203,9 @@ fun RestaurantCard(restaurantName: String ,navController: NavHostController ) {
         modifier = Modifier
             .fillMaxWidth()
             .height(200.dp)
-            .clickable { navController.navigate("selected") }
+            .clickable {
+
+                navController.navigate("selected") }
             .padding(8.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -391,6 +396,88 @@ fun ChineseCard(restaurantName: String, navController: NavHostController) {
                     Text(
                         "Location",
                         Modifier.clickable { navController.navigate("profile") }
+                    )
+
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        repeat(5) {
+                            Icon(
+                                imageVector = Icons.Filled.Star,
+                                contentDescription = null,
+                                tint = Color.Yellow,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("4.5", color = Color.Gray, fontSize = 12.sp)
+                    }
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+
+                }
+            }
+
+            Icon(
+                imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
+                contentDescription = null,
+                tint = if (isFavorite) Color.Red else Color.Gray,
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .clickable { isFavorite = !isFavorite }
+                    .padding(end = 8.dp)
+            )
+        }
+    }
+}
+
+
+@Composable
+fun card(restaurant : RestaurantData.Restaurant ,navController: NavHostController) {
+
+    var isFavorite by remember { mutableStateOf(false) }
+
+    ElevatedCard(
+        colors = CardDefaults.elevatedCardColors(Color.White),
+        shape = RoundedCornerShape(12.dp),
+        elevation = CardDefaults.cardElevation(8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp)
+            .clickable {
+
+                navController.navigate("selected/${restaurant.id}") }
+            .padding(8.dp)
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.restaurant),
+                        contentDescription = null,
+                        contentScale = ContentScale.Inside,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Column(
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(restaurant.name, fontWeight = FontWeight.Bold)
+                    Text(
+                        "Location",
+                        Modifier.clickable { navController.navigate("map") }
                     )
 
                     Row(verticalAlignment = Alignment.CenterVertically) {

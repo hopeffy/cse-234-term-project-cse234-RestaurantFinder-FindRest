@@ -97,6 +97,11 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:1.6.8")
 
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+    implementation ("com.google.code.gson:gson:2.8.9")
+    implementation ("com.squareup.moshi:moshi:1.12.0")
+    implementation ("com.squareup.moshi:moshi-kotlin:1.12.0")
+
+
 
     implementation ("androidx.datastore:datastore-preferences:1.1.1")
 

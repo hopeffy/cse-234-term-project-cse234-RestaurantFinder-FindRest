@@ -1,0 +1,16 @@
+{
+    "restaurantTypes" : [
+        {
+            "id" : "1",
+            "name" : "Bakery"
+        },
+        {
+            "id" : "2",
+            "name" : "Cafe"
+        },
+        {
+            "id" : "3",
+            "name" : "Chinese"
+        }
+    ]
+}

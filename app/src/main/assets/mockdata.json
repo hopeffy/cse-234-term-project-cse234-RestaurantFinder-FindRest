@@ -1,0 +1,256 @@
+{
+  "restaurants": [
+    {
+      "id": "1",
+      "name": "Sunrise Bakery",
+      "location": "123 Main St, Springfield",
+      "restaurantType": "Bakery",
+      "totalScore": 4.5,
+      "totalNumberOfStars": 10,
+      "comments": [
+        {
+          "sender": {
+            "fullName": "Alice Johnson",
+            "email": "alice@example.com",
+            "password": "password123",
+            "phone": "555-1234",
+            "avatarUrl": "http://example.com/avatar/alice.jpg"
+          },
+          "restaurantId": "1",
+          "subject": "Great pastries",
+          "body": "The croissants were delicious!",
+          "score": 5
+        },
+        {
+          "sender": {
+            "fullName": "Bob Smith",
+            "email": "bob@example.com",
+            "password": "password123",
+            "phone": "555-5678",
+            "avatarUrl": "http://example.com/avatar/bob.jpg"
+          },
+          "restaurantId": "1",
+          "subject": "Average coffee",
+          "body": "The coffee was okay, but I've had better.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Cafe Mocha",
+      "location": "456 Elm St, Springfield",
+      "restaurantType": "Cafe",
+      "totalScore": 4.2,
+      "totalNumberOfStars": 8,
+      "comments": [
+        {
+          "sender": {
+            "fullName": "Charlie Brown",
+            "email": "charlie@example.com",
+            "password": "password123",
+            "phone": "555-9876",
+            "avatarUrl": "http://example.com/avatar/charlie.jpg"
+          },
+          "restaurantId": "2",
+          "subject": "Cozy atmosphere",
+          "body": "Loved the ambiance, perfect for a Sunday morning.",
+          "score": 4
+        },
+        {
+          "sender": {
+            "fullName": "David Wright",
+            "email": "david@example.com",
+            "password": "password123",
+            "phone": "555-4321",
+            "avatarUrl": "http://example.com/avatar/david.jpg"
+          },
+          "restaurantId": "2",
+          "subject": "Great service",
+          "body": "The staff was very friendly and attentive.",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Dragon Palace",
+      "location": "789 Oak St, Springfield",
+      "restaurantType": "Chinese",
+      "totalScore": 4.8,
+      "totalNumberOfStars": 15,
+      "comments": [
+        {
+          "sender": {
+            "fullName": "Eve Adams",
+            "email": "eve@example.com",
+            "password": "password123",
+            "phone": "555-6543",
+            "avatarUrl": "http://example.com/avatar/eve.jpg"
+          },
+          "restaurantId": "3",
+          "subject": "Amazing food",
+          "body": "The dumplings are a must-try!",
+          "score": 5
+        },
+        {
+          "sender": {
+            "fullName": "Frank Harris",
+            "email": "frank@example.com",
+            "password": "password123",
+            "phone": "555-3210",
+            "avatarUrl": "http://example.com/avatar/frank.jpg"
+          },
+          "restaurantId": "3",
+          "subject": "Quick service",
+          "body": "Got my order in less than 10 minutes.",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Green Garden Cafe",
+      "location": "101 Pine St, Springfield",
+      "restaurantType": "Cafe",
+      "totalScore": 3.9,
+      "totalNumberOfStars": 7,
+      "comments": [
+        {
+          "sender": {
+            "fullName": "Grace Lee",
+            "email": "grace@example.com",
+            "password": "password123",
+            "phone": "555-7890",
+            "avatarUrl": "http://example.com/avatar/grace.jpg"
+          },
+          "restaurantId": "4",
+          "subject": "Nice selection",
+          "body": "They have a good variety of vegan options.",
+          "score": 4
+        },
+        {
+          "sender": {
+            "fullName": "Hank Miller",
+            "email": "hank@example.com",
+            "password": "password123",
+            "phone": "555-8765",
+            "avatarUrl": "http://example.com/avatar/hank.jpg"
+          },
+          "restaurantId": "4",
+          "subject": "Could be better",
+          "body": "The salad was a bit bland.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Red Dragon",
+      "location": "202 Cedar St, Springfield",
+      "restaurantType": "Chinese",
+      "totalScore": 4.0,
+      "totalNumberOfStars": 9,
+      "comments": [
+        {
+          "sender": {
+            "fullName": "Ivy Green",
+            "email": "ivy@example.com",
+            "password": "password123",
+            "phone": "555-2345",
+            "avatarUrl": "http://example.com/avatar/ivy.jpg"
+          },
+          "restaurantId": "5",
+          "subject": "Tasty food",
+          "body": "Loved the sweet and sour chicken.",
+          "score": 4
+        },
+        {
+          "sender": {
+            "fullName": "Jack Black",
+            "email": "jack@example.com",
+            "password": "password123",
+            "phone": "555-5432",
+            "avatarUrl": "http://example.com/avatar/jack.jpg"
+          },
+          "restaurantId": "5",
+          "subject": "Okay service",
+          "body": "The service was a bit slow.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Morning Brew",
+      "location": "303 Birch St, Springfield",
+      "restaurantType": "Cafe",
+      "totalScore": 4.6,
+      "totalNumberOfStars": 12,
+      "comments": [
+        {
+          "sender": {
+            "fullName": "Kate Brown",
+            "email": "kate@example.com",
+            "password": "password123",
+            "phone": "555-6789",
+            "avatarUrl": "http://example.com/avatar/kate.jpg"
+          },
+          "restaurantId": "6",
+          "subject": "Excellent coffee",
+          "body": "The latte was perfect.",
+          "score": 5
+        },
+        {
+          "sender": {
+            "fullName": "Luke White",
+            "email": "luke@example.com",
+            "password": "password123",
+            "phone": "555-9876",
+            "avatarUrl": "http://example.com/avatar/luke.jpg"
+          },
+          "restaurantId": "6",
+          "subject": "Good place to work",
+          "body": "Quiet and comfortable, great for working on my laptop.",
+          "score": 4
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Sweet Treats Bakery",
+      "location": "404 Willow St, Springfield",
+      "restaurantType": "Bakery",
+      "totalScore": 4.3,
+      "totalNumberOfStars": 11,
+      "comments": [
+        {
+          "sender": {
+            "fullName": "Megan Fox",
+            "email": "megan@example.com",
+            "password": "password123",
+            "phone": "555-1234",
+            "avatarUrl": "http://example.com/avatar/megan.jpg"
+          },
+          "restaurantId": "7",
+          "subject": "Delicious cakes",
+          "body": "The chocolate cake is to die for!",
+          "score": 5
+        },
+        {
+          "sender": {
+            "fullName": "Nina Williams",
+            "email": "nina@example.com",
+            "password": "password123",
+            "phone": "555-8765",
+            "avatarUrl": "http://example.com/avatar/nina.jpg"
+          },
+          "restaurantId": "7",
+          "subject": "Nice place",
+          "body": "Cute little bakery with friendly staff.",
+          "score": 4
+        }
+      ]
+    }
+  ]
+}
