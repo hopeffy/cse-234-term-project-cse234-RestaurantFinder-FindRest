@@ -154,24 +154,6 @@ fun Profile_Layout(navController: NavHostController) {
                             fontSize = 20.sp
                         )
                     }
-                    Spacer(modifier = Modifier.height(14.dp))
-
-                    Button(
-                        onClick = { /* Handle button click */ },
-                        modifier = Modifier
-                            .height(46.dp)
-                            .width(200.dp)
-                            .border( width = 1.dp , Color.Gray , shape = RoundedCornerShape(100.dp))
-                        ,
-                        colors = ButtonDefaults.buttonColors(Color.White)
-
-                    ) {
-                        Text(
-                            text = "DARK MODE",
-                            color = Color.Black,
-                            fontSize = 20.sp
-                        )
-                    }
 
                     Spacer(modifier = Modifier.height(14.dp))
 
