@@ -34,9 +34,7 @@
     - add the favorites.
 
 ## Profile
-    - Change the profile photo.
     - Change the name, email and password of the user.
 
-## Dark Mode
-    - Change the mode to dark or light.
+
 
