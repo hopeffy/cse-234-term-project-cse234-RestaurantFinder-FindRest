@@ -27,7 +27,13 @@ import com.example.restaurantfinder.R
 @Composable
 fun FavoritesPage(navController: NavHostController) {
     var favRest by remember { mutableStateOf("") }
-    val favoriteRestaurants = listOf("Restaurant A", "Restaurant B", "Restaurant C") // Dummy data
+
+    val favoriteRestaurants = listOf("StarBucks", "Milk Bar","Tavuk Dünyası", "Köfteci İlhan") // Dummy data
+
+
+    val filteredRestaurants = favoriteRestaurants.filter { restaurant ->
+        restaurant.contains(favRest, ignoreCase = true)
+    }
 
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -70,59 +76,12 @@ fun FavoritesPage(navController: NavHostController) {
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                items(favoriteRestaurants) { restaurant ->
+                items(filteredRestaurants) { restaurant ->
                     FavoriteRestaurantCard(restaurant, navController)
                 }
             }
         }
-
     }
-
-
-    /* Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Text(
-            text = "MY FAVORITES",
-            style = TextStyle(
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                letterSpacing = 1.25.sp
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 16.dp)
-        )
-
-        OutlinedTextField(
-            value = favRest,
-            onValueChange = { favRest = it },
-            trailingIcon = {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = "Search Icon"
-                )
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp),
-            shape = RoundedCornerShape(50.dp),
-            placeholder = { Text(text = "Search favorites...") }
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(favoriteRestaurants) { restaurant ->
-                FavoriteRestaurantCard(restaurant, navController)
-            }
-        }
-    } */
 }
 
 @Composable
@@ -152,7 +111,7 @@ fun FavoriteRestaurantCard(restaurantName: String, navController: NavHostControl
                     .clip(RoundedCornerShape(8.dp))
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.restaurant), // Replace with actual image resource
+                    painter = painterResource(id = R.drawable.restaurant),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
@@ -200,3 +159,4 @@ fun FavoriteRestaurantCard(restaurantName: String, navController: NavHostControl
         }
     }
 }
+
