@@ -76,7 +76,7 @@ fun Comments(navController: NavHostController, auth: FirebaseAuth, commentList: 
                 letterSpacing = 1.25.sp
             )
         )
-        //RestaurantList(navController)
+
         Column {
             AllComment(filterCom)
         }

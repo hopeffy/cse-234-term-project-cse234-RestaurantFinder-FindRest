@@ -30,7 +30,6 @@ fun FavoritesPage(navController: NavHostController) {
 
     val favoriteRestaurants = listOf("StarBucks", "Milk Bar","Tavuk Dünyası", "Köfteci İlhan") // Dummy data
 
-
     val filteredRestaurants = favoriteRestaurants.filter { restaurant ->
         restaurant.contains(favRest, ignoreCase = true)
     }
