@@ -1,5 +1,3 @@
-# Project Promotional Video
-[Demo Video](https://www.youtube.com/watch?v=rgd4QHxrbMs)
 
 
 ![Screenshot_6](https://github.com/user-attachments/assets/5b0f9f8f-bcff-47e6-8449-672184098180)
